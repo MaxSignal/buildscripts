@@ -282,13 +282,12 @@ fi
 if [ ! -f newlib-${NEWLIB_VER}.tar.gz ]; then
 	$FETCH ftp://sourceware.org/pub/newlib/newlib-${NEWLIB_VER}.tar.gz || { echo "Error: Failed to download newlib-${NEWLIB_VER}.tar.gz"; exit 1; }
 fi
-for archive in $archives $targetarchives $hostarchives
-do
-	echo $archive
-	if [ ! -f $archive ]; then
-		$FETCH https://downloads.devkitpro.org/$archive || { echo "Error: Failed to download $archive"; exit 1; }
-	fi
-done
+if [ ! -f binutils-${BINUTILS_VER}.tar.xz ]; then
+	$FETCH ftp://sourceware.org/pub/binutils/releases/binutils-${BINUTILS_VER}.tar.xz || { echo "Error: Failed to download binutils-${BINUTILS_VER}.tar.xz"; exit 1; }
+fi
+if [ ! -f gdb-${GDB_VER}.tar.xz ]; then
+	$FETCH ftp://sourceware.org/pub/gdb/releases/gdb-${GDB_VER}.tar.xz || { echo "Error: Failed to download gdb-${GDB_VER}.tar.xz"; exit 1; }
+fi
 
 cd $BUILDSCRIPTDIR
 mkdir -p $BUILDDIR
