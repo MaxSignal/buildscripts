@@ -288,7 +288,12 @@ fi
 if [ ! -f gdb-${GDB_VER}.tar.xz ]; then
 	$FETCH ftp://sourceware.org/pub/gdb/releases/gdb-${GDB_VER}.tar.xz || { echo "Error: Failed to download gdb-${GDB_VER}.tar.xz"; exit 1; }
 fi
-
+if [ ! -f gdb-${GDB_VER}.tar.xz ]; then
+	$FETCH ftp://sourceware.org/pub/gdb/releases/gdb-${GDB_VER}.tar.xz || { echo "Error: Failed to download gdb-${GDB_VER}.tar.xz"; exit 1; }
+fi
+if [ ! -f general-tools-$GENERAL_TOOLS_VER.tar.bz2 ]; then
+	$FETCH https://github.com/devkitPro/general-tools/releases/download/v$GENERAL_TOOLS_VER/general-tools-$GENERAL_TOOLS_VER.tar.bz2 || { echo "Error: Failed to download general-tools-$GENERAL_TOOLS_VER.tar.bz2"; exit 1; }
+fi
 cd $BUILDSCRIPTDIR
 mkdir -p $BUILDDIR
 cd $BUILDDIR
