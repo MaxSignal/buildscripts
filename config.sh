@@ -28,7 +28,8 @@ BUILD_DKPRO_INSTALLDIR=/opt/exword
 #---------------------------------------------------------------------------------
 # MAKEFLAGS for building - use number of processors for jobs
 #---------------------------------------------------------------------------------
-export MAKEFLAGS="$MAKEFLAGS -j$(nproc)"
+numcores=`getconf _NPROCESSORS_ONLN`
+export MAKEFLAGS="$MAKEFLAGS -j${numcores}"
 
 #---------------------------------------------------------------------------------
 # Uncomment to skip building of tools
